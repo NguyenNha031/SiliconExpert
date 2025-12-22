@@ -1,0 +1,472 @@
+body {
+  transform-origin: top center;
+}
+
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+}
+
+.hero-featured-block {
+  position: relative;
+  width: 100%;
+  min-height: 450px;
+  color: white;
+  margin-bottom: 40px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.hero-featured-block .hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.55);
+}
+
+.hero-featured-block .hero-content {
+  position: relative;
+  padding: 60px 50px;
+  max-width: 700px;
+  z-index: 2;
+}
+
+.hero-featured-block .hero-category {
+  display: inline-block;
+  background: #ff5757;
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.hero-featured-block .hero-title {
+  font-size: 42px;
+  line-height: 1.2;
+  margin: 10px 0 15px;
+  font-weight: 800;
+}
+
+.hero-featured-block .hero-title a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.hero-featured-block .hero-excerpt {
+  font-size: 18px;
+  opacity: 0.9;
+  margin-bottom: 20px;
+}
+
+.hero-featured-block .hero-date {
+  font-size: 14px;
+  opacity: 0.85;
+}
+/* Swiper CSS */
+@import url("https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css");
+
+/* Khung slider */
+.hero-slider {
+  width: 100%;
+  height: 500px;
+  position: relative;
+}
+
+.hero-slider .swiper-slide {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* Nút điều hướng */
+.swiper-button-next,
+.swiper-button-prev {
+  color: white;
+  width: 44px;
+  height: 44px;
+}
+
+/* Pagination */
+.swiper-pagination-bullet {
+  background: white;
+  opacity: 0.7;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  background: #ff5757;
+}
+
+.hero-slider {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-featured-block {
+  height: 100%;
+  position: relative;
+  color: white;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.hero-featured-block .hero-image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.55);
+}
+
+.hero-featured-block .hero-content {
+  position: absolute;
+  bottom: 40px;
+  left: 50px;
+  max-width: 650px;
+  z-index: 10;
+}
+
+.swiper-pagination-bullet {
+  background: white;
+  opacity: 0.7;
+}
+
+.swiper-pagination-bullet-active {
+  background: #ff5757;
+  opacity: 1;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: white;
+}
+.hero-slider.swiper-container {
+  /* position: absolute !important; */
+  /* width: 100% !important; */
+}
+
+.hero-slider {
+  display: block !important;
+  width: 100% !important;
+  grid-column: 1 / -1 !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  display: none !important;
+}
+.hero-slider-label {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  z-index: 20;
+  background: #ff4d4d;
+  color: #fff;
+  padding: 8px 20px;
+  /* border-radius: 4px; */
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.hero-featured-label {
+  margin-top: 25px;
+}
+.hero-category-right {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 20;
+  background: #ff4d4d;
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #fff;
+  text-transform: uppercase;
+}
+.hero-views {
+  /* position: absolute; */
+  top: 15px;
+  right: 15px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  color: #fff;
+  font-weight: bold;
+  backdrop-filter: blur(3px);
+}
+
+/* ===== WRAPPER ===== */
+.vnep-hero-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.vnep-hero-grid a {
+  text-decoration: none;
+  /* color: #5d5c5c !important; */
+  font-size: 34px;
+  font-weight: 700;
+  text-decoration: none;
+  line-height: 1.25;
+}
+
+/* ================= HERO ================= */
+.vnep-hero {
+  height: 420px;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  padding: 25px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.vnep-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.1));
+  border-radius: 12px;
+}
+
+.vnep-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 80%;
+}
+
+.vnep-hero-title a {
+  color: #2be4ff;
+  font-size: 34px;
+  font-weight: 700;
+  text-decoration: none;
+  line-height: 1.25;
+}
+
+.vnep-hero-title a:hover {
+  color: #fff;
+}
+
+/* ===== META ===== */
+.vnep-hero-meta {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #ddd;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.vnep-cat {
+  color: #ff5d5d;
+  font-weight: bold;
+}
+
+.vnep-dot {
+  width: 5px;
+  height: 5px;
+  background: #ccc;
+  border-radius: 50%;
+}
+.vnep-hero-title {
+  color: #f3f3f3;
+}
+
+/* ================= 3 CARD BELOW ================= */
+.vnep-list {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.vnep-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  cursor: pointer;
+  /* background: rgb(49 45 45 / 6%); */
+  backdrop-filter: blur(12px);
+  padding: 15px;
+  border-radius: 14px;
+  transition: 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+.vnep-card:hover,
+.vnep-hero:hover {
+  transform: translateY(-4px);
+}
+.vnep-thumb {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 10px;
+  min-height: 200x;
+}
+
+.vnep-card-info {
+  margin-top: 10px;
+}
+
+.vnep-cat-small {
+  color: #ff6666;
+  font-weight: 800;
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+.vnep-card-title {
+  font-size: 20px;
+  margin-top: 1px !important;
+}
+.vnep-card-title a {
+  display: block;
+  margin-top: 1px;
+  color: #5d5c5c !important;
+  line-height: 1.35;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.vnep-card-title a:hover {
+  color: #46e0ff;
+}
+
+/* ===== DARK MODE BACKGROUND ===== */
+/* body {
+  background: #111 !important;
+  color: #eee;
+} */
+
+/* Responsive */
+@media (max-width: 768px) {
+  .vnep-list {
+    flex-direction: column;
+  }
+}
+
+/* ===== GRID LAYOUT ===== */
+.vnep-grid-6 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+}
+
+/* ===== CARD ===== */
+.vnep-card {
+  /* background: rgb(49 45 45 / 6%); */
+  backdrop-filter: blur(12px);
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: 0.25s ease;
+  overflow: hidden;
+}
+
+.vnep-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Thumbnail */
+.vnep-thumb {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+/* Category */
+.vnep-cat-small {
+  color: #ff6666;
+  font-weight: 800;
+  font-size: 17px;
+  margin-bottom: 6px;
+}
+
+/* Title */
+.vnep-card-title a {
+  text-decoration: none;
+  color: #f4f4f4;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.vnep-card-meta {
+  font-size: 18px;
+  color: #adadad;
+  display: flex;
+  justify-content: space-between;
+}
+//////////////////////////////////////////////////
+.vnep-block-label {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.vnep-block-label span {
+  display: inline-block;
+  padding: 8px 22px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  border-radius: 8px;
+  letter-spacing: 0.5px;
+}
+.vnep-block-label {
+  margin-bottom: 5px;
+  display: inline-block;
+  position: relative;
+  font-weight: 700;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.hero-meta span {
+  font-size: inherit;
+  color: inherit;
+}
+.hero-title a {
+  color: inherit !important;
+}
+.vnep-card-empty {
+  pointer-events: none;
+}
+.vnep-badge-pin {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #ffcc00;
+  color: #000;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 6px;
+  z-index: 10;
+  line-height: 1;
+}
+
+.vnep-badge-pin.hero {
+  top: 16px;
+  left: 16px;
+  font-size: 13px;
+}
+
+.vnep-badge-pin.card {
+  font-size: 11px;
+  padding: 3px 6px;
+}

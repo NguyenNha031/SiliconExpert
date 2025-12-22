@@ -1,0 +1,91 @@
+/* =====================================================
+   MAGAZINE HERO – EDITOR SAFE PREVIEW
+===================================================== */
+
+.editor-styles-wrapper .vnep-magazine-hero {
+  max-width: 100%;
+}
+
+/* ===== 1 CỘT CHO EDITOR ===== */
+.editor-styles-wrapper .vnep-magazine-hero > .grid {
+  display: flex !important;
+  gap: 14px !important;
+}
+
+/* ===== HERO LEFT ===== */
+.editor-styles-wrapper .vnep-magazine-hero a.col-span-2 {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+/* hiện ảnh IMG chắc chắn */
+.editor-styles-wrapper .vnep-magazine-hero a.col-span-2 img {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 260px;
+  object-fit: cover;
+}
+
+/* ===== RIGHT COLUMN ===== */
+.editor-styles-wrapper .vnep-magazine-hero .relative.right-\[167px\] {
+  position: static !important;
+  right: auto !important;
+  width: 100% !important;
+}
+
+/* ===== CARD BACKGROUND IMAGE FIX ===== */
+.editor-styles-wrapper .vnep-magazine-hero a[style*="background-image"] {
+  display: block;
+  min-height: 160px;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+/* ===== REMOVE HOVER + SCALE ===== */
+.editor-styles-wrapper .vnep-magazine-hero .group-hover\:scale-105 {
+  transform: none !important;
+}
+
+/* ===== OVERLAY NHẸ LẠI ===== */
+.editor-styles-wrapper .vnep-magazine-hero .absolute.inset-0 {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.55),
+    rgba(0, 0, 0, 0.1)
+  ) !important;
+}
+/* Target đúng grid của magazine hero */
+.editor-styles-wrapper .vnep-magazine-hero > .grid {
+  position: relative;
+}
+
+/* Overlay phủ toàn bộ grid */
+.editor-styles-wrapper .vnep-magazine-hero > .grid::after {
+  content: "";
+  display: block;
+  height: 480px !important;
+  top: -500px !important;
+  position: relative !important;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.65),
+    rgba(0, 0, 0, 0.15)
+  ) !important;
+  z-index: 3;
+}
+
+.editor-styles-wrapper .vnep-magazine-hero > .grid > * {
+  position: relative;
+  z-index: 3;
+}
+/* Rút gọn tên bài ghim trong Gutenberg Multi-select */
+.pinned-posts-wrapper span {
+  display: block !important;
+  width: 100% !important;
+  max-width: 230px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -1,0 +1,128 @@
+{
+  "apiVersion": 2,
+  "name": "admiral/hero-featured",
+  "title": "Hero Featured Slider",
+  "category": "theme",
+  "icon": "star-filled",
+  "description": "CHỈNH SỬA BLOCK",
+  "keywords": ["hero", "slider", "news"],
+  "editorScript": "admiral-hero-featured-editor",
+  "editorStyle": "admiral-hero-featured-editor-style",
+  "script": "admiral-hero-featured-frontend",
+  "style": "admiral-hero-featured-style",
+  "render": "file:./render.php",
+  "supports": {
+    "align": ["wide", "full"],
+    "anchor": true
+  },
+  "attributes": {
+    "label": { "type": "string", "default": "Tin mới nhất" },
+    "postsToShow": { "type": "number", "default": 5 },
+    "sortBy": { "type": "string", "default": "date_desc" },
+    "sourceType": {
+      "type": "string",
+      "default": "category"
+    },
+    "selectedCategories": {
+      "type": "array",
+      "default": []
+    },
+    "selectedTags": {
+      "type": "array",
+      "default": []
+    },
+    "layoutType": { "type": "string", "default": "slider" },
+    "hideBlock": { "type": "boolean", "default": false },
+    "showCategory": { "type": "boolean", "default": true },
+    "showDate": { "type": "boolean", "default": true },
+    "showViews": { "type": "boolean", "default": true },
+    "autoplay": { "type": "boolean", "default": true },
+    "excerptLength": { "type": "number", "default": 25 },
+    "labelTextColor": { "type": "string", "default": "#ffffff" },
+    "labelBgColor": { "type": "string", "default": "#d33" },
+    "labelFontSize": { "type": "number", "default": 16 },
+    "catTextColor": { "type": "string", "default": "#ffffff" },
+    "catBgColor": { "type": "string", "default": "#d33" },
+    "catFontSize": { "type": "number", "default": 13 },
+    "titleColor": { "type": "string", "default": "#ffffff" },
+    "titleFontSize": { "type": "number", "default": 32 },
+    "sliderMetaColor": { "type": "string", "default": "#adadad" },
+    "sliderMetaSize": { "type": "number", "default": 18 },
+    "excerptColor": { "type": "string", "default": "#eeeeee" },
+    "excerptFontSize": { "type": "number", "default": 15 },
+    "catTextColorGrid6": { "type": "string", "default": "#ff6666" },
+    "catFontSizeGrid6": { "type": "number", "default": 17 },
+    "metaTextColorGrid6": { "type": "string", "default": "#EDEDED" },
+    "metaFontSizeGrid6": { "type": "number", "default": 18 },
+    "titleTextColorGrid6": { "type": "string", "default": "#5d5c5c" },
+    "titleFontSizeGrid6": { "type": "number", "default": 18 },
+    "cardBgGrid6": {
+      "type": "string",
+      "default": "#302D2D54"
+    },
+    "heroCatColor": { "type": "string", "default": "#ff5d5d" },
+    "heroCatSize": { "type": "number", "default": 34 },
+    "heroTitleColor": { "type": "string", "default": "#f3f3f3" },
+    "heroTitleSize": { "type": "number", "default": 28 },
+    "heroMetaColor": { "type": "string", "default": "#adadad" },
+    "heroMetaSize": { "type": "number", "default": 18 },
+    "heroGridCatColor": { "type": "string", "default": "#ff6666" },
+    "heroGridCatSize": { "type": "number", "default": 17 },
+    "heroGridMetaColor": { "type": "string", "default": "#EDEDED" },
+    "heroGridMetaSize": { "type": "number", "default": 18 },
+    "heroGridTitleColor": { "type": "string", "default": "#ffffff" },
+    "heroGridTitleSize": { "type": "number", "default": 18 },
+    "heroGridCardBg": {
+      "type": "string",
+      "default": "#302D2D54"
+    },
+    "labelFontWeight": { "type": "string", "default": "600" },
+    "catFontWeight": { "type": "string", "default": "600" },
+    "titleFontWeight": { "type": "string", "default": "700" },
+    "excerptFontWeight": { "type": "string", "default": "400" },
+    "sliderMetaWeight": { "type": "string", "default": "400" },
+    "heroCatWeight": { "type": "string", "default": "600" },
+    "heroTitleWeight": { "type": "string", "default": "700" },
+    "heroMetaWeight": { "type": "string", "default": "400" },
+    "heroGridCatWeight": { "type": "string", "default": "600" },
+    "heroGridTitleWeight": { "type": "string", "default": "600" },
+    "heroGridMetaWeight": { "type": "string", "default": "400" },
+    "catFontWeightGrid6": {
+      "type": "string",
+      "default": "600"
+    },
+    "metaFontWeightGrid6": {
+      "type": "string",
+      "default": "400"
+    },
+    "titleFontWeightGrid6": {
+      "type": "string",
+      "default": "600"
+    },
+    "labelFontWeightGrid6": {
+      "type": "string",
+      "default": "600"
+    },
+
+    "limitTitleLinesGrid6": {
+      "type": "boolean",
+      "default": true
+    },
+    "titleLineClampGrid6": {
+      "type": "number",
+      "default": 2
+    },
+    "limitGridTitleLines": {
+      "type": "boolean",
+      "default": true
+    },
+    "gridTitleLineClamp": {
+      "type": "number",
+      "default": 2
+    },
+    "pinnedPosts": {
+      "type": "array",
+      "default": []
+    }
+  }
+}
