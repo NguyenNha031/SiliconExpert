@@ -26,3 +26,11 @@ function get_menu_item_image_id($menu_item_id)
 
     return false;
 }
+function menu_children($parent_id, $items)
+{
+    if (!is_array($items))
+        return [];
+    return array_values(array_filter($items, function ($item) use ($parent_id) {
+        return (int) $item->menu_item_parent === (int) $parent_id;
+    }));
+}

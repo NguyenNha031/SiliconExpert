@@ -15,14 +15,7 @@ if (!is_array($menu_items)) {
 }
 
 /* ===== HELPERS ===== */
-function menu_children($parent_id, $items)
-{
-    if (!is_array($items))
-        return [];
-    return array_values(array_filter($items, function ($item) use ($parent_id) {
-        return (int) $item->menu_item_parent === (int) $parent_id;
-    }));
-}
+
 
 function find_mega_item($class, $items)
 {
