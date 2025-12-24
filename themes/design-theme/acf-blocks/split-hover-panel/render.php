@@ -82,8 +82,7 @@ $right_img = $right['right_image'] ?? null;
             <!-- MEDIA -->
             <?php if ($right_img): ?>
                 <div class="panel-media panel-media--right absolute inset-0 z-10 pointer-events-none">
-                    <img class="panel-media__el rounded-sm w-[837px] h-[350px] rounded-sm absolute object-none right-[-84px] bottom-[-36px]"
-                        src="<?= esc_url($right_img['url']); ?>" alt="">
+                    <img class=" panel-media__el panel-media--right-img" src="<?= esc_url($right_img['url']); ?>" alt="">
                 </div>
             <?php endif; ?>
         </div>

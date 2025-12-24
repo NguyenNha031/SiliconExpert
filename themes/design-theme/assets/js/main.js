@@ -1,43 +1,32 @@
 //  BTN GET STARTED – TEXT + ICON SWAP
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".btn-get-started").forEach((btn) => {
-    /* TEXT */
     const textEl = btn.querySelector(".btn-get-started__text");
     if (textEl && !textEl.querySelector(".btn-swap-text")) {
       const wrap = document.createElement("span");
       wrap.className = "btn-swap-text";
-
       const original = document.createElement("span");
       original.textContent = textEl.textContent;
-
       const clone = document.createElement("span");
       clone.className = "clone";
       clone.textContent = textEl.textContent;
-
       wrap.appendChild(original);
       wrap.appendChild(clone);
-
       textEl.textContent = "";
       textEl.appendChild(wrap);
     }
-
-    /* ICON */
     const iconEl = btn.querySelector(".btn-get-started__icon");
     const icon = iconEl?.querySelector("i");
     if (icon && !iconEl.querySelector(".btn-swap-icon")) {
       const iconWrap = document.createElement("span");
       iconWrap.className = "btn-swap-icon";
-
       const originalIcon = document.createElement("span");
       originalIcon.appendChild(icon.cloneNode(true));
-
       const cloneIcon = document.createElement("span");
       cloneIcon.className = "clone";
       cloneIcon.appendChild(icon.cloneNode(true));
-
       iconWrap.appendChild(originalIcon);
       iconWrap.appendChild(cloneIcon);
-
       iconEl.innerHTML = "";
       iconEl.appendChild(iconWrap);
     }
@@ -157,31 +146,29 @@ document.addEventListener("DOMContentLoaded", () => {
   const header = document.querySelector(".header");
   if (!header) return;
 
-  const megaMap = {
-    "Solutions & Products": document.getElementById("mega-solutions"),
-    "Partner Integrations": document.getElementById("mega-partners"),
-    Resources: document.getElementById("mega-resources"),
-    Company: document.getElementById("mega-company"),
-  };
-
   function hideAllMega() {
-    Object.values(megaMap).forEach((mega) => mega?.classList.add("hidden"));
+    document
+      .querySelectorAll(".mega-menu")
+      .forEach((m) => m.classList.add("hidden"));
     header.classList.remove("is-mega-open");
+    document
+      .querySelectorAll(".header-nav a.is-active")
+      .forEach((a) => a.classList.remove("is-active"));
   }
 
-  document.querySelectorAll(".header-nav a").forEach((link) => {
-    const text = link.textContent.trim();
-    const targetMega = megaMap[text];
-    if (!targetMega) return;
-    link.addEventListener("mouseenter", () => {
-      document
-        .querySelectorAll(".header-nav a.is-active")
-        .forEach((a) => a.classList.remove("is-active"));
+  document.querySelectorAll(".header-nav li.has-mega").forEach((li) => {
+    const link = li.querySelector("a");
+    const megaClass = [...li.classList].find((c) => c.startsWith("mega-"));
+    if (!megaClass) return;
 
+    const mega = document.getElementById(megaClass);
+    if (!mega) return;
+
+    li.addEventListener("mouseenter", () => {
       hideAllMega();
-      targetMega.classList.remove("hidden");
+      mega.classList.remove("hidden");
       header.classList.add("is-mega-open");
-      link.classList.add("is-active");
+      if (link) link.classList.add("is-active");
     });
   });
 
@@ -218,7 +205,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-//
+
+// HEADER ARROW
 document.addEventListener("DOMContentLoaded", () => {
   const header = document.querySelector(".header");
   const arrow = document.querySelector(".header-arrow");
@@ -232,7 +220,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     return false;
   };
-
   arrow.addEventListener("click", (e) => {
     if (lockArrowWhenMegaOpen()) {
       e.preventDefault();

@@ -95,5 +95,17 @@ add_action('acf/init', function () {
             'align' => ['wide', 'full'],
         ],
     ]);
+    // ==== HEADER OPTIONS PAGE ====
+    if (function_exists('acf_add_options_page')) {
+        acf_add_options_page([
+            'page_title' => 'Header Settings',
+            'menu_title' => 'Header',
+            'menu_slug' => 'header-settings',
+            'capability' => 'edit_posts',
+            'redirect' => false,
+            'position' => 60,
+            'icon_url' => 'dashicons-editor-kitchensink',
+        ]);
+    }
 
 });

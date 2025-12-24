@@ -13,13 +13,11 @@ if (empty($items))
         <?php foreach ($items as $item): ?>
             <div class="relative text-white h-[188px] w-[298px]">
                 <h3 class="text-[40px] font-semibold leading-tight
-                           text-[#8ab4ff]
-                           drop-shadow-[0_0_12px_rgba(138,180,255,0.7)]">
-                    Ranked
-                    <span class="block">
-                        #<?php echo intval($item['rank_number']); ?>
-                    </span>
+           text-[#8ab4ff]
+           drop-shadow-[0_0_12px_rgba(138,180,255,0.7)]">
+                    <?php echo esc_html($item['rank_number']); ?>
                 </h3>
+
                 <p class="mt-4 text-[14px] leading-[1.6] text-white/80 w-[130%] lg:w-[250px]">
                     <?php echo esc_html($item['description']); ?>
                 </p>

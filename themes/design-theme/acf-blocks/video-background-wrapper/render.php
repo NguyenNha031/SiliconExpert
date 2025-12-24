@@ -6,11 +6,9 @@
 
 <section class="relative overflow-hidden min-h-[720px]">
 
-    <!-- VIDEO -->
     <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline>
         <source src="<?php echo get_template_directory_uri(); ?>/assets/videos/video-bg.mp4" type="video/mp4">
     </video>
-    <!-- CONTENT -->
     <div class="relative z-10
         px-4 sm:px-8 lg:px-[95px]
         mt-[100px] sm:mt-20 lg:mt-[160px]">

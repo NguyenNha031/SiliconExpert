@@ -1,9 +1,8 @@
 <?php
 $slides = get_field('slides');
 $subhead = get_field('subhead') ?: 'Subhead scroll animated module';
-$cta_text = !empty($slide['cta_text']) ? $slide['cta_text'] : 'Secondary CTA';
-if (!$slides)
-    return;
+
+
 ?>
 <section class="feature-callout relative py-15 lg:py-32 lg:h-[870px] h-[auto] overflow-hidden">
     <div class="pl-[15px] lg:pl-[95px] mx-auto relative">
@@ -25,6 +24,20 @@ if (!$slides)
         </div>
         <div class="flex flex-col lg:block relative">
             <?php foreach ($slides as $index => $slide): ?>
+                <?php
+                $cta_enable = $slide['cta_enable'] ?? false;
+                $cta_text = $slide['cta_text'] ?? 'Secondary CTA';
+                $cta_link = $slide['cta_link'] ?? null;
+
+                $cta_url = '#';
+                $cta_target = '_self';
+
+                if (is_array($cta_link) && !empty($cta_link['url'])) {
+                    $cta_url = $cta_link['url'];
+                    $cta_target = $cta_link['target'] ?: '_self';
+                }
+                ?>
+
                 <div class="feature-slide transition-opacity duration-700 ease-in-out
             relative opacity-100 z-10 mb-20 last:mb-0 
             lg:absolute lg:inset-0 lg:mb-0 
@@ -32,7 +45,8 @@ if (!$slides)
                     data-slide="<?php echo $index; ?>">
                     <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-20 items-center">
                         <div
-                            class="lg:max-w-[520px] max-w-[490px] text-white lg:pl-[0] pl-[15px] mt-[100px] min-h-[420px]  fc-left-content">
+                            class="lg:max-w-[520px] max-w-[490px] text-white lg:pl-[0] pl-[15px] mt-[100px] min-h-[420px] fc-left-content">
+
                             <?php if (!empty($slide['logo'])): ?>
                                 <div class="mb-6">
                                     <img src="<?php echo esc_url($slide['logo']['url']); ?>"
@@ -40,20 +54,28 @@ if (!$slides)
                                         class="w-[34px] h-[34px] object-contain" />
                                 </div>
                             <?php endif; ?>
+
                             <?php if (!empty($slide['headline'])): ?>
                                 <h2 class="text-[32px] leading-[1.15] font-medium mb-6">
                                     <?php echo esc_html($slide['headline']); ?>
                                 </h2>
                             <?php endif; ?>
+
                             <?php if (!empty($slide['description'])): ?>
                                 <p class="text-white text-[16px] leading-[1.7] mb-10">
                                     <?php echo esc_html($slide['description']); ?>
                                 </p>
                             <?php endif; ?>
-                            <button class="btn-non-bg h-[48px]">
-                                <?php echo esc_html($cta_text); ?>
-                            </button>
+
+                            <?php if ($cta_enable): ?>
+                                <a href="<?php echo esc_url($cta_url); ?>" target="<?php echo esc_attr($cta_target); ?>"
+                                    class="btn-non-bg h-[48px] inline-flex items-center">
+                                    <?php echo esc_html($cta_text); ?>
+                                </a>
+                            <?php endif; ?>
+
                         </div>
+
                         <div class="relative bottom-0 lg:bottom-[-100px] ml-[75px] lg:ml-[0]">
                             <?php if (!empty($slide['image'])): ?>
                                 <div class="relative inline-block">

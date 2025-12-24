@@ -10,7 +10,7 @@
   }
 
   .btn-get-started__text {
-    @apply px-[19px] py-3 text-[14px];
+    @apply px-[19px] py-3 text-[14px] w-[150px];
   }
 
   .btn-get-started__icon {
@@ -192,7 +192,6 @@ button {
   transition: opacity 0.9s ease, transform 1.5s ease;
 }
 
-/* Kích hoạt khi có class is-active */
 .feature-slide.is-active .fc-left-content {
   opacity: 1;
   transform: translateY(0);
@@ -273,4 +272,34 @@ button {
   position: absolute;
   inset: 0;
   pointer-events: none;
+}
+.swiper-pagination-progress {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.swiper-pagination-progress .swiper-pagination-progressbar-fill {
+  background: white;
+}
+.panel-media--right {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.panel-media--right-img {
+  position: absolute;
+  width: 837px;
+  height: 350px;
+  flex-shrink: 0;
+  bottom: -36px;
+  left: 50%;
+  transition: left 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  object-fit: none;
+}
+.right-panel.is-expanded .panel-media--right-img {
+  left: 25%;
+}
+.right-panel.is-collapsed .panel-media--right-img {
+  left: 50%;
 }
