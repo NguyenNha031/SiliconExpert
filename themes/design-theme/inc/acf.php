@@ -106,6 +106,31 @@ add_action('acf/init', function () {
             'position' => 60,
             'icon_url' => 'dashicons-editor-kitchensink',
         ]);
+    };
+
+    // ==== FOOTER OPTIONS PAGE ====
+    if (function_exists('acf_add_options_page')) {
+        acf_add_options_page([
+            'page_title' => 'Footer Settings',
+            'menu_title' => 'Footer',
+            'menu_slug' => 'footer-settings',
+            'capability' => 'edit_posts',
+            'redirect' => false,
+            'position' => 61,
+            'icon_url' => 'dashicons-editor-kitchensink',
+        ]);
+    };
+    // ==== POST CTA OPTIONS PAGE ====
+    if (function_exists('acf_add_options_page')) {
+        acf_add_options_page([
+            'page_title' => 'Post CTA Settings',
+            'menu_title' => 'Post CTA',
+            'menu_slug' => 'post-cta-settings',
+            'capability' => 'edit_posts',
+            'redirect' => false,
+            'position' => 62,
+            'icon_url' => 'dashicons-megaphone',
+        ]);
     }
 
 });

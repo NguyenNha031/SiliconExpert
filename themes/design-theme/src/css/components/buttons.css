@@ -10,7 +10,7 @@
   }
 
   .btn-get-started__text {
-    @apply px-[19px] py-3 text-[14px] w-[150px];
+    @apply py-3 text-[14px] w-[150px];
   }
 
   .btn-get-started__icon {
@@ -302,4 +302,62 @@ button {
 }
 .right-panel.is-collapsed .panel-media--right-img {
   left: 50%;
+}
+.post-single .a2a_kit {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.post-single .a2a_kit a {
+  color: #1c3664;
+  font-size: 16px;
+  transition: color 0.2s ease;
+}
+
+.post-single .a2a_kit a:hover {
+  color: #0b1f3b;
+}
+#customShareModal.hidden {
+  display: none;
+}
+
+.sassy-modal-wrapper .heateor_sss_sharing_ul {
+  display: flex !important;
+  gap: 12px !important;
+  justify-content: flex-start !important;
+  padding: 0 !important;
+}
+
+.sassy-modal-wrapper .heateor_sss_square {
+  border-radius: 50% !important;
+  width: 44px !important;
+  height: 44px !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08) !important;
+}
+
+.sassy-modal-wrapper .heateor_sss_square:hover {
+  transform: translateY(-2px);
+  transition: transform 0.2s ease;
+}
+.split-panel .panel-desc,
+.split-panel .panel-arrow,
+.split-panel .btn-get-started {
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.split-panel.is-expanded .panel-desc,
+.split-panel.is-expanded .panel-arrow,
+.split-panel.is-expanded .btn-get-started {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.split-panel .panel-title {
+  opacity: 1 !important;
+  transform: none !important;
 }

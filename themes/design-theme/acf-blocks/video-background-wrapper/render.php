@@ -11,7 +11,7 @@
     </video>
     <div class="relative z-10
         px-4 sm:px-8 lg:px-[95px]
-        mt-[100px] sm:mt-20 lg:mt-[160px]">
+        sm:mt-[110px]  lg:mt-[160px]">
         <?php if (is_admin()): ?>
             <InnerBlocks />
         <?php else: ?>

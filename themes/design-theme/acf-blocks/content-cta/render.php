@@ -74,7 +74,7 @@ $secondary_link = get_field('secondary_cta_link');
             <a href="<?= esc_url($primary_url) ?>" target="<?= esc_attr($primary_target) ?>"
                 class="btn-get-started w-[195px] h-[56px]">
 
-                <span class="btn-get-started__text w-[150px]">
+                <span class="btn-get-started__text w-[150px] px-[19px]">
                     <?= esc_html($primary_text) ?>
                 </span>
 

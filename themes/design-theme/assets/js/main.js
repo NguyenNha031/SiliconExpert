@@ -247,76 +247,86 @@ document.addEventListener("DOMContentLoaded", () => {
   const slides = section.querySelectorAll(".testimonial-slide");
   if (!slides.length) return;
 
+  const nextBtn = section.querySelector(".ts-next");
+  const prevBtn = section.querySelector(".ts-prev");
+  const progressBar = section.querySelector(".ts-progress__bar");
+
   let current = 0;
   const total = slides.length;
 
   function showSlide(index) {
-    if (window.innerWidth < 1024) return;
-
     slides.forEach((slide, i) => {
-      const isActive = i === index;
-      slide.classList.toggle("opacity-100", isActive);
-      slide.classList.toggle("opacity-0", !isActive);
-      slide.classList.toggle("z-10", isActive);
-      slide.classList.toggle("z-0", !isActive);
-      slide.classList.toggle("is-active", isActive);
+      if (i === index) {
+        // Active Slide
+        slide.classList.add("opacity-100", "z-10", "is-active");
+        slide.classList.remove("opacity-0", "z-0", "pointer-events-none");
+      } else {
+        // Inactive Slides
+        slide.classList.remove("opacity-100", "z-10", "is-active");
+        slide.classList.add("opacity-0", "z-0", "pointer-events-none");
+      }
     });
+
+    // Cập nhật Progress Bar
+    if (progressBar && total > 1) {
+      // Tính toán dựa trên chiều rộng container (72px)
+      const progressWidth = 100 / total;
+      const moveX = index * 100;
+      progressBar.style.width = `${progressWidth}%`;
+      progressBar.style.transform = `translateX(${moveX}%)`;
+      progressBar.style.transition = "transform 0.5s ease";
+    }
   }
+
+  // Khởi tạo slide đầu tiên
   showSlide(0);
-  const nextBtn = section.querySelector(".ts-next");
-  const prevBtn = section.querySelector(".ts-prev");
 
-  if (nextBtn) {
-    nextBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      current = (current + 1) % total;
-      showSlide(current);
-    });
-  }
-
-  if (prevBtn) {
-    prevBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      current = (current - 1 + total) % total;
-      showSlide(current);
-    });
-  }
-
-  section.addEventListener("click", () => {
-    if (window.innerWidth < 1024) return;
+  nextBtn?.addEventListener("click", (e) => {
+    e.preventDefault();
     current = (current + 1) % total;
     showSlide(current);
   });
-});
 
-// Collapsed và expanded split-hover block
-document.addEventListener("DOMContentLoaded", () => {
-  const block = document.querySelector(".split-hover-block");
-  if (!block) return;
-  const leftPanel = block.querySelector(".left-panel");
-  const rightPanel = block.querySelector(".right-panel");
-  const leftVideo = leftPanel?.querySelector(".panel-media video");
-  leftPanel.classList.add("is-collapsed");
-  rightPanel.classList.add("is-expanded");
-  leftPanel.addEventListener("mouseenter", () => {
-    leftPanel.classList.add("is-expanded");
-    leftPanel.classList.remove("is-collapsed");
-    rightPanel.classList.add("is-collapsed");
-    rightPanel.classList.remove("is-expanded");
-    if (leftVideo) {
-      leftVideo.currentTime = 0;
-      leftVideo.play().catch(() => {});
-    }
+  prevBtn?.addEventListener("click", (e) => {
+    e.preventDefault();
+    current = (current - 1 + total) % total;
+    showSlide(current);
   });
+});
+// COLLAPSED AND EXPANEDED
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".split-hover-block").forEach((block) => {
+    const leftPanel = block.querySelector(".left-panel");
+    const rightPanel = block.querySelector(".right-panel");
+    if (!leftPanel || !rightPanel) return;
 
-  rightPanel.addEventListener("mouseenter", () => {
-    rightPanel.classList.add("is-expanded");
-    rightPanel.classList.remove("is-collapsed");
+    const leftVideo = leftPanel.querySelector(".panel-media video");
+
     leftPanel.classList.add("is-collapsed");
-    leftPanel.classList.remove("is-expanded");
-    if (leftVideo) {
-      leftVideo.pause();
-      leftVideo.currentTime = 0;
-    }
+    rightPanel.classList.add("is-expanded");
+
+    leftPanel.addEventListener("mouseenter", () => {
+      leftPanel.classList.add("is-expanded");
+      leftPanel.classList.remove("is-collapsed");
+      rightPanel.classList.add("is-collapsed");
+      rightPanel.classList.remove("is-expanded");
+
+      if (leftVideo) {
+        leftVideo.currentTime = 0;
+        leftVideo.play().catch(() => {});
+      }
+    });
+
+    rightPanel.addEventListener("mouseenter", () => {
+      rightPanel.classList.add("is-expanded");
+      rightPanel.classList.remove("is-collapsed");
+      leftPanel.classList.add("is-collapsed");
+      leftPanel.classList.remove("is-expanded");
+
+      if (leftVideo) {
+        leftVideo.pause();
+        leftVideo.currentTime = 0;
+      }
+    });
   });
 });

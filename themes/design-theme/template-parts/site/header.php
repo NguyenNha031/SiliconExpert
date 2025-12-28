@@ -3,7 +3,6 @@
  * Header – Mega Menu dynamic
  */
 
-/* ===== GET MENU ITEMS ===== */
 $locations = get_nav_menu_locations();
 $menu_items = [];
 
@@ -13,10 +12,6 @@ if (isset($locations['primary'])) {
 if (!is_array($menu_items)) {
     $menu_items = [];
 }
-
-/* ===== HELPERS ===== */
-
-
 function find_mega_item($class, $items)
 {
     foreach ($items as $item) {
@@ -27,7 +22,6 @@ function find_mega_item($class, $items)
     return null;
 }
 
-/* ===== MEGA ROOTS ===== */
 $mega_solutions = find_mega_item('mega-solutions', $menu_items);
 $mega_partners = find_mega_item('mega-partners', $menu_items);
 $mega_resources = find_mega_item('mega-resources', $menu_items);
@@ -43,59 +37,147 @@ $mega_company = find_mega_item('mega-company', $menu_items);
         display: inline-block;
         font-size: 14px;
         transition: transform 0.2s ease;
+        color: currentColor;
     }
 
-    /* hover */
-    .header-nav li:hover>a::after {
-        transform: rotate(180deg);
-    }
-
-    /* khi mega đang mở (JS add class is-active) */
+    .header-nav li:hover>a::after,
     .header-nav a.is-active::after {
         transform: rotate(180deg);
     }
+
+    .single-post header.header.is-mega-open,
+    .single-post header.header.is-search-open {
+        color: #ffffff;
+    }
+
+    .single-post header.header.is-mega-open .header-nav,
+    .single-post header.header.is-search-open .header-nav,
+    .single-post header.header.is-mega-open .header-nav a,
+    .single-post header.header.is-search-open .header-nav a,
+    .single-post header.header.is-mega-open .header-nav li>a::after,
+    .single-post header.header.is-search-open .header-nav li>a::after {
+        color: #ffffff !important;
+    }
+
+    .single-post header.header.is-mega-open .header-actions,
+    .single-post header.header.is-search-open .header-actions,
+    .single-post header.header.is-mega-open .header-actions a,
+    .single-post header.header.is-search-open .header-actions a,
+    .single-post header.header.is-mega-open .header-actions i,
+    .single-post header.header.is-search-open .header-actions i {
+        color: #ffffff !important;
+    }
+
+    .single-post header.header.is-mega-open .mega-menu,
+    .single-post header.header.is-search-open .mega-menu {
+        border-top-color: #ffffff !important;
+    }
+
+    .single-post header.header.is-search-open+#header-search,
+    .single-post header.header.is-mega-open+#header-search {
+        border-top-color: #ffffff !important;
+    }
+
+    .logo-post {
+        display: none;
+    }
+
+    .single-post header.header:not(.is-mega-open):not(.is-search-open) .logo-default {
+        display: none;
+    }
+
+    .single-post header.header:not(.is-mega-open):not(.is-search-open) .logo-post {
+        display: flex;
+    }
+
+    .single-post header.header.is-mega-open .logo-default,
+    .single-post header.header.is-search-open .logo-default {
+        display: flex;
+    }
+
+    .single-post header.header.is-mega-open .logo-post,
+    .single-post header.header.is-search-open .logo-post {
+        display: none;
+    }
+
+    .single-post header.header .header-actions .btn-non-bg {
+        color: #1C3664 !important;
+    }
 </style>
 <?php
-// LOGO
 $logo_icon = get_field('header_logo_icon', 'option');
 $logo_text = get_field('header_logo_text', 'option');
-
-// SEARCH
+$logo_icon_default = get_field('header_logo_icon', 'option');
+$logo_text_default = get_field('header_logo_text', 'option');
+$logo_icon_post = get_field('post_page_logo_icon', 'option');
+$logo_text_post = get_field('header_logo_text_post', 'option');
+$is_post_page = is_single() && get_post_type() === 'post';
 $search_enable = get_field('header_search_enable', 'option');
-
-// CTA LOGIN
 $login_enable = get_field('header_cta_login_enable', 'option');
 $login_text = get_field('header_cta_login_text', 'option') ?: 'Login';
 $login_link = get_field('header_cta_login_link', 'option');
-
-// CTA GET STARTED
 $get_started_enable = get_field('header_cta_primary_enable', 'option');
 $get_started_text = get_field('header_cta_primary_text', 'option') ?: 'Get Started';
 $get_started_link = get_field('header_cta_primary_link', 'option');
 ?>
+<?php
+$is_post_page = is_single() && get_post_type() === 'post';
 
-<header class="header bg-transparent h-[100px] absolute w-full z-20 transition-colors">
+$header_text_class = $is_post_page
+    ? 'text-[#1C3664]'
+    : 'text-white';
+
+$header_bg_class = $is_post_page
+    ? 'bg-white'
+    : 'bg-transparent';
+?>
+
+<header class="header <?= $header_bg_class ?> h-[100px] absolute w-full z-20 transition-colors">
+
     <div class="mx-auto max-w-7xl px-4 lg:px-0">
         <div class="flex h-[100px] items-center justify-between">
 
             <!-- LOGO -->
-            <?php if ($logo_icon || $logo_text): ?>
-                <div class="header-logo flex items-center gap-3 h-[36px]">
-                    <?php if ($logo_icon): ?>
-                        <img src="<?= esc_url($logo_icon['url']) ?>" alt="<?= esc_attr($logo_icon['alt'] ?: 'Logo Icon') ?>"
-                            class="logo-icon h-[26px] w-auto object-contain cursor-pointer" />
-                    <?php endif; ?>
+            <?php if (
+                $logo_icon_default || $logo_text_default ||
+                $logo_icon_post || $logo_text_post
+            ): ?>
 
-                    <?php if ($logo_text): ?>
-                        <img src="<?= esc_url($logo_text['url']) ?>" alt="<?= esc_attr($logo_text['alt'] ?: 'Logo Text') ?>"
-                            class="logo-text h-[22px] w-auto object-contain hidden sm:block cursor-pointer" />
+                <div class="header-logo flex items-center gap-3 h-[36px] w-[160px]">
+
+                    <!-- DEFAULT LOGO -->
+                    <div class="logo-default flex items-center  justify-between w-full ">
+                        <?php if ($logo_icon_default): ?>
+                            <img src="<?= esc_url($logo_icon_default['url']) ?>" class="logo-icon h-[26px] cursor-pointer " />
+                        <?php endif; ?>
+                        <?php if ($logo_text_default): ?>
+                            <img src="<?= esc_url($logo_text_default['url']) ?>" class="logo-text h-[22px] cursor-pointer" />
+                        <?php endif; ?>
+                    </div>
+
+                    <!-- POST LOGO -->
+                    <?php if ($is_post_page && ($logo_icon_post || $logo_text_post)): ?>
+                        <div class="logo-post flex items-center justify-between w-full">
+                            <?php if ($logo_icon_post): ?>
+                                <a href="http://learningwordpress.test:8080/" aria-label="Back to top">
+                                    <img src="<?= esc_url($logo_icon_post['url']) ?>" class="logo-icon h-[26px] cursor-pointer" />
+                                </a>
+                            <?php endif; ?>
+
+                            <?php if ($logo_text_post): ?>
+                                <a href="http://learningwordpress.test:8080/" aria-label="Back to top">
+                                    <img src="<?= esc_url($logo_text_post['url']) ?>" class="logo-text h-[22px] cursor-pointer" />
+                                </a>
+                            <?php endif; ?>
+                        </div>
                     <?php endif; ?>
                 </div>
             <?php endif; ?>
 
-
             <!-- MAIN NAV -->
-            <nav class="header-nav hidden lg:flex w-[561px] text-[14px] font-medium text-white font-avenir pr-[35px]">
+            <nav
+                class="header-nav hidden lg:flex w-[561px] text-[14px] font-medium <?= $header_text_class ?> font-avenir pr-[35px]">
+
                 <?php
                 wp_nav_menu([
                     'theme_location' => 'primary',
@@ -129,7 +211,6 @@ $get_started_link = get_field('header_cta_primary_link', 'option');
                         <div class="grid grid-cols-12 gap-10">
 
                             <?php
-                            // Tách cột theo title
                             $solutions_col = null;
                             $products_col = null;
                             $services_col = null;
@@ -372,8 +453,7 @@ $get_started_link = get_field('header_cta_primary_link', 'option');
             <!-- MEGA: RESOURCES -->
             <?php if ($mega_resources): ?>
                 <div id="mega-resources" class="mega-menu absolute lg:left-[40px] top-[100px] w-[95%]
-        bg-[#1c3664] text-white hidden border-t border-black z-30">
-
+                  bg-[#1c3664] text-white hidden border-t border-black z-30">
                     <div class="max-w-7xl mx-auto px-10 py-10">
                         <div class="grid grid-cols-12 gap-10">
 
@@ -491,7 +571,7 @@ $get_started_link = get_field('header_cta_primary_link', 'option');
             <!-- MEGA: COMPANY -->
             <?php if ($mega_company): ?>
                 <div id="mega-company" class="mega-menu hidden absolute lg:left-[40px] top-[100px] w-[95%]
-    bg-[#1c3664] text-white  border-t border-black z-30">
+                    bg-[#1c3664] text-white  border-t border-black z-30">
 
                     <div class="max-w-7xl mx-auto px-10 py-10">
                         <div class="grid grid-cols-12 gap-10">
@@ -617,16 +697,17 @@ $get_started_link = get_field('header_cta_primary_link', 'option');
 
 
             <!-- ACTIONS -->
-            <div class="header-actions hidden lg:flex items-center gap-2 text-sm">
+            <div class="header-actions hidden lg:flex items-center gap-2 text-sm <?= $header_text_class ?>">
+
 
                 <?php if ($search_enable): ?>
-                    <a href="#" class="text-white text-[14px] js-header-search">
+                    <a href="#" class="text-[14px] js-header-search">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </a>
                 <?php endif; ?>
 
                 <!-- EN -->
-                <a class="text-white text-[14px] px-[17px]">
+                <a class=" text-[14px] px-[17px] text-[500] ">
                     EN <i class="fa-solid fa-chevron-down"></i>
                 </a>
 

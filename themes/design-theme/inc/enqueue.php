@@ -27,7 +27,4 @@ add_action('wp_enqueue_scripts', function () {
         [],
         '6.5.1'
     );
-
-
-
 });
