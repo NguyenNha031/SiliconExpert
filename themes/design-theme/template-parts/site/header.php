@@ -142,36 +142,40 @@ $header_bg_class = $is_post_page
                 $logo_icon_default || $logo_text_default ||
                 $logo_icon_post || $logo_text_post
             ): ?>
-
                 <div class="header-logo flex items-center gap-3 h-[36px] w-[160px]">
 
-                    <!-- DEFAULT LOGO -->
-                    <div class="logo-default flex items-center  justify-between w-full ">
-                        <?php if ($logo_icon_default): ?>
-                            <img src="<?= esc_url($logo_icon_default['url']) ?>" class="logo-icon h-[26px] cursor-pointer " />
-                        <?php endif; ?>
-                        <?php if ($logo_text_default): ?>
-                            <img src="<?= esc_url($logo_text_default['url']) ?>" class="logo-text h-[22px] cursor-pointer" />
-                        <?php endif; ?>
-                    </div>
+                    <a href="<?= esc_url(home_url('/')); ?>" class="flex items-center gap-3 w-full"
+                        aria-label="Go to homepage">
 
-                    <!-- POST LOGO -->
-                    <?php if ($is_post_page && ($logo_icon_post || $logo_text_post)): ?>
-                        <div class="logo-post flex items-center justify-between w-full">
-                            <?php if ($logo_icon_post): ?>
-                                <a href="http://learningwordpress.test:8080/" aria-label="Back to top">
-                                    <img src="<?= esc_url($logo_icon_post['url']) ?>" class="logo-icon h-[26px] cursor-pointer" />
-                                </a>
+                        <!-- DEFAULT LOGO -->
+                        <div class="logo-default flex items-center justify-between w-full">
+                            <?php if ($logo_icon_default): ?>
+                                <img src="<?= esc_url($logo_icon_default['url']) ?>"
+                                    class="logo-icon h-[26px] cursor-pointer" />
                             <?php endif; ?>
 
-                            <?php if ($logo_text_post): ?>
-                                <a href="http://learningwordpress.test:8080/" aria-label="Back to top">
-                                    <img src="<?= esc_url($logo_text_post['url']) ?>" class="logo-text h-[22px] cursor-pointer" />
-                                </a>
+                            <?php if ($logo_text_default): ?>
+                                <img src="<?= esc_url($logo_text_default['url']) ?>"
+                                    class="logo-text h-[22px] cursor-pointer" />
                             <?php endif; ?>
                         </div>
-                    <?php endif; ?>
+
+                        <!-- POST LOGO -->
+                        <?php if ($is_post_page && ($logo_icon_post || $logo_text_post)): ?>
+                            <div class="logo-post flex items-center justify-between w-full">
+                                <?php if ($logo_icon_post): ?>
+                                    <img src="<?= esc_url($logo_icon_post['url']) ?>" class="logo-icon h-[26px] cursor-pointer" />
+                                <?php endif; ?>
+
+                                <?php if ($logo_text_post): ?>
+                                    <img src="<?= esc_url($logo_text_post['url']) ?>" class="logo-text h-[22px] cursor-pointer" />
+                                <?php endif; ?>
+                            </div>
+                        <?php endif; ?>
+
+                    </a>
                 </div>
+
             <?php endif; ?>
 
             <!-- MAIN NAV -->
@@ -390,15 +394,23 @@ $header_bg_class = $is_post_page
 
                                             <?php if ($see_all): ?>
                                                 <a href="<?= esc_url($see_all->url) ?>"
-                                                    class="inline-flex items-center gap-2 mt-6 text-white font-medium">
+                                                    class="inline-flex items-center gap-2 mt-6 text-white font-medium group">
+
                                                     <?= esc_html($see_all->title) ?>
-                                                    <i class="fa-solid fa-arrow-right rotate-[-45deg]"></i>
+
+                                                    <span class="career-arrow-wrap">
+                                                        <span class="arrow arrow-main">
+                                                            <i class="fa-solid fa-arrow-right rotate-[-45deg]"></i>
+                                                        </span>
+                                                        <span class="arrow arrow-clone">
+                                                            <i class="fa-solid fa-arrow-right rotate-[-45deg]"></i>
+                                                        </span>
+                                                    </span>
+
                                                 </a>
                                             <?php endif; ?>
 
                                         </div>
-
-
                                         <!-- PARTNER LIST -->
                                         <div class="flex-1">
                                             <div class="flex flex-col gap-5">
@@ -515,11 +527,22 @@ $header_bg_class = $is_post_page
 
                                                 <?php if ($see_all): ?>
                                                     <a href="<?= esc_url($see_all->url) ?>"
-                                                        class="inline-flex items-center gap-2 mt-6 text-white font-medium ">
+                                                        class="inline-flex items-center gap-2 mt-6 text-white font-medium group">
+
                                                         <?= esc_html($see_all->title) ?>
-                                                        <i class="fa-solid fa-arrow-right rotate-[-45deg]"></i>
+
+                                                        <span class="career-arrow-wrap">
+                                                            <span class="arrow arrow-main">
+                                                                <i class="fa-solid fa-arrow-right rotate-[-45deg]"></i>
+                                                            </span>
+                                                            <span class="arrow arrow-clone">
+                                                                <i class="fa-solid fa-arrow-right rotate-[-45deg]"></i>
+                                                            </span>
+                                                        </span>
+
                                                     </a>
                                                 <?php endif; ?>
+
                                             </div>
                                         <?php endif; ?>
 
@@ -625,11 +648,23 @@ $header_bg_class = $is_post_page
 
                                     <?php if ($careers): ?>
                                         <a href="<?= esc_url($careers->url) ?>"
-                                            class="inline-flex items-center gap-2 mt-6 text-white font-medium ">
+                                            class="inline-flex items-center gap-2 mt-6 text-white font-medium group">
+
                                             <?= esc_html($careers->title) ?>
-                                            <i class="fa-solid fa-arrow-right rotate-[-45deg]"></i>
+
+                                            <span class="career-arrow-wrap">
+                                                <span class="arrow arrow-main">
+                                                    <i class="fa-solid fa-arrow-up rotate-[45deg]"></i>
+                                                </span>
+                                                <span class="arrow arrow-clone">
+                                                    <i class="fa-solid fa-arrow-up rotate-[45deg]"></i>
+                                                </span>
+                                            </span>
+
                                         </a>
                                     <?php endif; ?>
+
+
                                 </div>
                             <?php endif; ?>
 

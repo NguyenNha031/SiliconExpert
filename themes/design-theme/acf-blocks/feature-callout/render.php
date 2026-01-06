@@ -78,18 +78,21 @@ $subhead = get_field('subhead') ?: 'Subhead scroll animated module';
 
                         <div class="relative bottom-0 lg:bottom-[-100px] ml-[75px] lg:ml-[0]">
                             <?php if (!empty($slide['image'])): ?>
-                                <div class="relative inline-block">
-                                    <div
-                                        class="absolute top-0 left-[203px] w-[64px] h-[2px] bg-gradient-to-r from-[#2E7BFF] to-transparent z-20 shadow-[0_0_8px_#2E7BFF]">
+                                <div class="relative inline-block p-[1px]">
+
+                                    <div class="animate-glow-run absolute top-0 left-0 w-[60px] h-[2px] 
+                        bg-gradient-to-r from-transparent via-[#2E7BFF] to-transparent 
+                        shadow-[0_0_12px_#2E7BFF] z-30">
                                     </div>
 
                                     <div
-                                        class="p-[1.5px] rounded-[15px] bg-gradient-to-b from-[#2E7BFF]/60 via-[#2E7BFF]/20 to-white/10 shadow-2xl border border-white/5">
+                                        class="relative rounded-[15px] bg-gradient-to-b from-[#2E7BFF]/30 via-transparent to-transparent border border-white/10 overflow-hidden">
                                         <div class="rounded-[14px] p-5 bg-[#0e1a32]">
                                             <img src="<?php echo esc_url($slide['image']['url']); ?>" alt=""
                                                 class="block lg:w-[852px] lg:h-[520px] w-[511px] h-[324px] rounded-[10px] max-w-none bg-white shadow-lg" />
                                         </div>
                                     </div>
+
                                 </div>
                             <?php endif; ?>
                         </div>

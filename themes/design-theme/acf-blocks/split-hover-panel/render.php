@@ -18,7 +18,7 @@ $right_img = $right['right_image'] ?? null;
 
 ?>
 
-<section class="split-hover-block bg-[#081427] py-[80px] px-5 flex justify-center">
+<section class="split-hover-block bg-[#081427] py-[120px] px-5 flex justify-center">
     <div class="split-container relative w-full max-w-[1200px] flex gap-5 h-[500px]">
 
         <!-- LEFT PANEL -->

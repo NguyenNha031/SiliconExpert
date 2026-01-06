@@ -21,7 +21,7 @@ get_header();
     }
 </style>
 
-<main class="post-single">
+<main class="post-single bg-white">
 
     <?php if (have_posts()):
         while (have_posts()):
@@ -285,11 +285,11 @@ $related_posts = design_get_related_posts([
 ]);
 ?>
 
-<section class="py-20">
+<section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-6">
 
         <!-- HEADER -->
-        <div class="flex items-center justify-between mb-12">
+        <div class="flex items-center justify-between mb-12 ">
             <div class="flex items-center gap-4">
                 <span class="w-[2px] h-[24px] bg-[#FCC937]"></span>
                 <?php
@@ -311,10 +311,10 @@ $related_posts = design_get_related_posts([
                 $secondary_target = $secondary_link['target'] ?? '_self';
                 ?>
                 <?php if ($secondary_text && $secondary_link): ?>
-                    <button href="<?= esc_url($secondary_url); ?>" target="<?= esc_attr($secondary_target); ?>" class="inline-flex items-center gap-3 px-5 py-2.5
+                    <a href="<?= esc_url($secondary_url); ?>" target="<?= esc_attr($secondary_target); ?>" class="inline-flex items-center gap-3 px-5 py-2.5
                  btn-non-bg text-[#1c3664] ">
                         <span><?= esc_html($secondary_text); ?></span>
-                    </button>
+                    </a>
                 <?php endif; ?>
             <?php endif; ?>
 
@@ -323,12 +323,31 @@ $related_posts = design_get_related_posts([
         <!-- GRID -->
         <div class="sm:block lg:grid grid-cols-1 md:grid-cols-3 gap-10">
             <?php foreach ($related_posts as $p): ?>
-                <article class="sm:mb[15px]">
-                    <a href="<?= get_permalink($p->ID); ?>" class="block overflow-hidden rounded-sm custom-cut-corner">
-                        <?= get_the_post_thumbnail($p->ID, 'medium_large', [
-                            'class' => 'w-full sm:h-[420px] lg:h-[220px]  object-cover'
-                        ]); ?>
-                    </a>
+                <article class="group sm:mb-[15px]">
+                    <div class="relative overflow-hidden rounded-sm custom-cut-corner">
+
+                        <!-- BUTTON OVERLAY -->
+                        <button class="btn-get-started btn-icon-only
+                   absolute top-4 right-4 z-20
+                   opacity-0 translate-y-2 
+                   pointer-events-none
+                   transition-all duration-300 ease-out
+                   group-hover:opacity-100
+                   group-hover:translate-y-0
+                   
+                   group-hover:pointer-events-auto">
+                            <span class="btn-get-started__icon">
+                                <i class="fa-solid fa-arrow-right rotate-[-30deg]"></i>
+                            </span>
+                        </button>
+
+                        <a href="<?= get_permalink($p->ID); ?>" class="block">
+                            <?= get_the_post_thumbnail($p->ID, 'medium_large', [
+                                'class' => 'w-full sm:h-[420px] lg:h-[220px] object-cover transition-transform duration-500 '
+                            ]); ?>
+                        </a>
+
+                    </div>
 
                     <h3 class="mt-4 text-[16px] font-medium text-[#1C3664]">
                         <?= esc_html(get_the_title($p->ID)); ?>
@@ -340,6 +359,7 @@ $related_posts = design_get_related_posts([
                         <span><?= design_get_read_time($p->ID); ?></span>
                     </div>
                 </article>
+
             <?php endforeach; ?>
         </div>
 

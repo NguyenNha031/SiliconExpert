@@ -16,12 +16,14 @@ $total = count($slides);
 ?>
 
 <section class="testimonial-slider
-    testimonial-gradient
-    relative overflow-hidden
-    bg-[#11213F]
-    text-white
-    h-[600px]
-    flex items-center">
+        testimonial-gradient
+        relative overflow-hidden
+        text-white
+        h-[600px]
+        flex items-center
+        bg-cover bg-center bg-no-repeat"
+    style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/bg-testimonial.jpg');">
+
 
     <div class="max-w-[75%] mx-auto px-4 lg:px-0 relative w-full h-full">
 

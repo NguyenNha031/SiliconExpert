@@ -33,28 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-//  HEADER COLLAPSED LOGO
-document.addEventListener("DOMContentLoaded", () => {
-  const header = document.querySelector(".header");
-  const logoIcon = document.querySelector(".logo-icon");
-  const logoText = document.querySelector(".logo-text");
-
-  if (!header || !logoIcon) return;
-
-  logoIcon.addEventListener("click", () => {
-    if (header.classList.contains("is-mega-open")) return;
-    header.classList.toggle("is-collapsed");
-  });
-
-  logoText?.addEventListener("click", () => {
-    if (header.classList.contains("is-mega-open")) return;
-
-    if (!header.classList.contains("is-collapsed")) {
-      header.classList.add("is-collapsed");
-    }
-  });
-});
-
 //  FEATURE CALLOUT SLIDER
 document.addEventListener("DOMContentLoaded", () => {
   const slides = document.querySelectorAll(".feature-callout .feature-slide");
@@ -65,7 +43,8 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!slides.length || !section) return;
 
   let current = 0;
-
+  let autoTimer = null;
+  const AUTO_DELAY = 6000;
   function showSlide(index) {
     if (window.innerWidth < 1024) return;
 
@@ -82,6 +61,18 @@ document.addEventListener("DOMContentLoaded", () => {
     indicator && (indicator.textContent = index + 1);
     progressBar &&
       (progressBar.style.transform = `translateX(${index * 100}%)`);
+
+    resetAutoSlide();
+  }
+  function resetAutoSlide() {
+    if (autoTimer) clearTimeout(autoTimer);
+
+    autoTimer = setTimeout(() => {
+      if (window.innerWidth >= 1024) {
+        current = (current + 1) % slides.length;
+        showSlide(current);
+      }
+    }, AUTO_DELAY);
   }
 
   setTimeout(() => showSlide(0), 50);

@@ -11,7 +11,7 @@ $terms_text = get_field('footer_terms_text', 'option') ?: 'Terms of Use';
 $privacy_link = get_field('footer_privacy_link', 'option');
 $terms_link = get_field('footer_terms_link', 'option');
 ?>
-<footer class="bg-[#1f3764] text-white">
+<footer class="bg-[#1f3764] text-white sticky bottom-0 -z-[5]">
     <?php
     $logo_icon = get_field('header_logo_icon', 'option');
     $logo_text = get_field('header_logo_text', 'option');
@@ -55,7 +55,6 @@ $terms_link = get_field('footer_terms_link', 'option');
         }
     }
 
-    /* ===== FIND OTHERS (LEVEL 2) ===== */
     foreach ($level_1 as $root) {
         foreach (menu_children($root->ID, $menu_items) as $col) {
             $title = trim($col->title);
@@ -75,7 +74,6 @@ $terms_link = get_field('footer_terms_link', 'option');
         }
     }
 
-    /* ===== PARTNER LINKS ===== */
     $partner_links = $partner
         ? menu_children($partner->ID, $menu_items)
         : [];
@@ -84,7 +82,6 @@ $terms_link = get_field('footer_terms_link', 'option');
         $partner_links[] = $become_partner_item;
     }
 
-    /* ===== COMPANY LINKS ===== */
     $company_links = $company_root
         ? menu_children($company_root->ID, $menu_items)
         : [];

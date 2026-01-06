@@ -42,11 +42,11 @@ if ($latest_posts->have_posts()) {
 }
 ?>
 
-<section class="relative py-20">
+<section class="relative py-20 bg-white">
     <div class="max-w-7xl px-4 lg:px-0">
 
         <!-- HEADER -->
-        <div class="flex items-center justify-between mb-14 lg:pl-[36px]">
+        <div class="flex items-center justify-between mb-14 lg:pl-[36px] lg:w-[108%]">
             <div class="flex items-center gap-4">
                 <span class="w-[2px] h-[24px] bg-[#FCC937]"></span>
                 <?php if ($section_title): ?>
@@ -71,22 +71,41 @@ if ($latest_posts->have_posts()) {
                     <?php
                     $p = $posts[0];
                     setup_postdata($p);
+                    $video = get_field('featured_video', $p->ID);
+                    $video_url = is_array($video) ? $video['url'] : $video;
+                    $thumb = get_the_post_thumbnail_url($p->ID, 'large');
+
                     ?>
 
                     <a href="<?php echo esc_url(get_permalink($p->ID)); ?>"
                         class="group relative block overflow-hidden rounded-sm lg:h-[420px] custom-cut-corner">
 
-                        <?php if (has_post_thumbnail($p->ID)): ?>
-                            <?php echo get_the_post_thumbnail($p->ID, 'large', ['class' => 'w-full h-full object-cover']); ?>
+                        <?php if ($video_url): ?>
+                            <video class="w-full h-full object-cover transition-transform duration-500 "
+                                src="<?= esc_url($video_url); ?>" muted loop playsinline data-hover-video>
+                            </video>
+                        <?php elseif (has_post_thumbnail($p->ID)): ?>
+                            <?php echo get_the_post_thumbnail($p->ID, 'large', [
+                                'class' => 'w-full h-full object-cover transition-transform duration-500 '
+                            ]); ?>
                         <?php endif; ?>
 
-                        <span class="absolute top-4 right-4 opacity-0 scale-90
-                            group-hover:opacity-100 group-hover:scale-100
-                            transition-all duration-300 bg-[#FCC937]
-                            w-[40px] h-[40px] rounded-md flex items-center justify-center">
-                            <i class="fa-solid fa-arrow-right rotate-[-30deg] text-[#1C3664]"></i>
-                        </span>
+
+                        <!-- BUTTON OVERLAY -->
+                        <button class="btn-get-started btn-icon-only
+               absolute top-4 right-4 z-20
+               opacity-0 translate-y-2 
+               pointer-events-none
+               transition-all duration-300 ease-out
+               group-hover:opacity-100
+               group-hover:translate-y-0
+               group-hover:pointer-events-auto">
+                            <span class="btn-get-started__icon">
+                                <i class="fa-solid fa-arrow-right rotate-[-30deg]"></i>
+                            </span>
+                        </button>
                     </a>
+
 
                     <h3 class="mt-6 text-[20px] font-medium text-[#1C3664]">
                         <?php echo esc_html(get_the_title($p->ID)); ?>
@@ -109,23 +128,42 @@ if ($latest_posts->have_posts()) {
                         <?php
                         $p = $posts[$i];
                         setup_postdata($p);
+                        $video = get_field('featured_video', $p->ID);
+                        $video_url = is_array($video) ? $video['url'] : $video;
+                        $thumb = get_the_post_thumbnail_url($p->ID, 'large');
+
                         ?>
 
                         <div class="side-item-wrapper mb-8">
                             <a href="<?php echo esc_url(get_permalink($p->ID)); ?>"
                                 class="group relative block overflow-hidden rounded-sm sm:h-[420px] lg:h-[200px] custom-cut-corner">
 
-                                <?php if (has_post_thumbnail($p->ID)): ?>
-                                    <?php echo get_the_post_thumbnail($p->ID, 'medium', ['class' => 'w-full h-full object-cover']); ?>
+                                <?php if ($video_url): ?>
+                                    <video class="w-full h-full object-cover transition-transform duration-500 "
+                                        src="<?= esc_url($video_url); ?>" muted loop playsinline data-hover-video>
+                                    </video>
+                                <?php elseif (has_post_thumbnail($p->ID)): ?>
+                                    <?php echo get_the_post_thumbnail($p->ID, 'medium', [
+                                        'class' => 'w-full h-full object-cover transition-transform duration-500 '
+                                    ]); ?>
                                 <?php endif; ?>
 
-                                <span class="absolute top-4 right-4 opacity-0 scale-90
-                                    group-hover:opacity-100 group-hover:scale-100
-                                    transition-all duration-300 bg-[#FCC937]
-                                    w-[40px] h-[40px] rounded-md flex items-center justify-center">
-                                    <i class="fa-solid fa-arrow-right rotate-[-30deg] text-[#1C3664]"></i>
-                                </span>
+
+                                <!-- BUTTON OVERLAY -->
+                                <button class="btn-get-started btn-icon-only
+                                absolute top-4 right-4 z-20
+                                opacity-0 translate-y-2 
+                                pointer-events-none
+                                transition-all duration-300 ease-out
+                                group-hover:opacity-100
+                                group-hover:translate-y-0
+                                group-hover:pointer-events-auto">
+                                    <span class="btn-get-started__icon">
+                                        <i class="fa-solid fa-arrow-right rotate-[-30deg]"></i>
+                                    </span>
+                                </button>
                             </a>
+
 
                             <a href="<?php echo esc_url(get_permalink($p->ID)); ?>">
                                 <h4 class="mt-4 text-[16px] font-medium text-[#1C3664]">

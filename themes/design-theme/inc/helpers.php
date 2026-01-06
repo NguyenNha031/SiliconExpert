@@ -1,6 +1,6 @@
 <?php
 /**
- * Helper: Get image ID from Menu Icons plugin
+ * Helper
  */
 
 function get_menu_item_image_id($menu_item_id)

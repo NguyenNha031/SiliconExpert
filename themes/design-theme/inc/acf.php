@@ -131,6 +131,34 @@ add_action('acf/init', function () {
             'position' => 62,
             'icon_url' => 'dashicons-megaphone',
         ]);
-    }
+    };
+    // === RESOURCES HERO BLOCK ===
+    acf_register_block_type([
+        'name' => 'resources-hero',
+        'title' => 'Resources – Hero',
+        'description' => 'Hero block cho trang Resources với bài viết nổi bật',
+        'render_template' => get_template_directory() . '/acf-blocks/resources-hero/render.php',
+        'category' => 'theme',
+        'icon' => 'admin-post',
+        'keywords' => ['resources', 'featured'],
+        'supports' => [
+            'align' => ['full'],
+        ],
+    ]);
+    // ===== POST CONTENT CTA =====
+    acf_register_block_type([
+        'name' => 'post-content-cta',
+        'title' => 'Post Content CTA',
+        'description' => 'CTA dùng trong nội dung bài viết hoặc trang',
+        'render_template' => get_template_directory() . '/acf-blocks/post-content-cta/render.php',
+        'category' => 'theme',
+        'icon' => 'megaphone',
+        'keywords' => ['cta', 'post', 'subscribe'],
+        'supports' => [
+            'align' => ['wide', 'full'],
+        ],
+    ]);
+
+
 
 });

@@ -56,3 +56,28 @@
   border-left: none;
   padding-left: 0;
 }
+/* RESOURCES PAGINATION */
+.resources-pagination .pagination-item,
+.resources-pagination .pagination-arrow {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #1c3664;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.resources-pagination .pagination-item:hover,
+.resources-pagination .pagination-arrow:hover {
+  background-color: #1c3664;
+  color: #fff;
+}
+
+.resources-pagination .pagination-item.is-active {
+  background-color: #fff;
+  border: 2px solid #1c3664;
+  font-weight: 600;
+}
