@@ -1,6 +1,6 @@
 <?php
 /**
- * Header – Mega Menu dynamic
+ * Header 
  */
 
 $locations = get_nav_menu_locations();

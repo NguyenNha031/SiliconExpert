@@ -295,19 +295,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const rightPanel = block.querySelector(".right-panel");
     if (!leftPanel || !rightPanel) return;
 
-    /* ===== MOBILE ===== */
     if (!isDesktop()) {
-      // Mobile: cả 2 panel đều expanded
       leftPanel.classList.add("is-expanded");
       leftPanel.classList.remove("is-collapsed");
 
       rightPanel.classList.add("is-expanded");
       rightPanel.classList.remove("is-collapsed");
 
-      return; // ⛔ DỪNG TẠI ĐÂY, KHÔNG GẮN HOVER
+      return;
     }
 
-    /* ===== DESKTOP ===== */
     const leftVideo = leftPanel.querySelector(".panel-media video");
 
     leftPanel.classList.add("is-collapsed");
