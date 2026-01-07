@@ -23,30 +23,30 @@ $cats = get_the_category($post_id);
 $cat = !empty($cats) ? $cats[0]->name : 'Resources';
 $read = get_field('read_time', $post_id) ?: '1 min read';
 ?>
-<section class="bg-[#1c3664] text-white pt-[160px] pb-[100px]">
-    <div class="flex justify-between max-w-7xl mx-auto px-6 items-center pb-[50px]">
+<section class="bg-[#1c3664] text-white pt-[160px] lg:pb-[100px]">
+    <div class="block lg:flex justify-between max-w-7xl mx-auto px-6 items-center pb-[25px] lg:pb-[50px]">
         <h1 class="text-[48px] font-semibold mb-6">
             <?= esc_html($page_title); ?>
         </h1>
-        <div class="w-[57%]">
+        <div class="lg:w-[57%] pt-[20px]">
             <?php if ($page_desc): ?>
-                <p class="text-white/80 max-w-[80%] mb-12">
+                <p class="text-white sm:text-[20px] lg:max-w-[80%] lg:mb-12">
                     <?= esc_html($page_desc); ?>
                 </p>
             <?php endif; ?>
         </div>
 
     </div>
-    <div class="max-w-7xl mx-auto px-6 grid grid-cols-12 gap-12 relative">
+    <div class="max-w-7xl mx-auto px-6 block lg:grid grid-cols-12 gap-12 relative">
 
         <!-- LEFT -->
         <div class="col-span-5 h-[150px]">
 
 
-            <span class="text-[#FCC937] text-sm font-medium uppercase  block">
+            <span class="text-[#FCC937] text-sm font-medium uppercase lg:mb-0 mb-[25px] block">
                 <?= esc_html($featured_label); ?>
             </span>
-            <div class="absolute bottom-0 w-[36%]">
+            <div class="lg:absolute lg:bottom-0 lg:w-[36%]">
                 <a href="<?= esc_url(get_permalink()); ?>" class="block group">
                     <h2 class="text-[28px] font-semibold leading-snug no-underline">
                         <?php the_title(); ?>
@@ -69,18 +69,18 @@ $read = get_field('read_time', $post_id) ?: '1 min read';
         </div>
 
         <!-- RIGHT -->
-        <div class="col-span-7">
+        <div class="col-span-7 pt-[40px] lg:pt-0">
             <?php if ($thumb): ?>
                 <div class="relative group w-full h-[420px] overflow-hidden">
 
                     <button class="btn-get-started btn-icon-only
-        absolute top-4 right-4 z-20
-        opacity-0 translate-y-2 scale-90
-        pointer-events-none
-        transition-all duration-300 ease-out
-        group-hover:opacity-100
-        group-hover:translate-y-0
-        group-hover:pointer-events-auto">
+                    absolute top-4 right-4 z-20
+                    opacity-0 translate-y-2 scale-90
+                    pointer-events-none
+                    transition-all duration-300 ease-out
+                    group-hover:opacity-100
+                    group-hover:translate-y-0
+                    group-hover:pointer-events-auto">
                         <span class="btn-get-started__icon">
                             <i class="fa-solid fa-arrow-right rotate-[-30deg]"></i>
                         </span>

@@ -3,7 +3,6 @@
  * Post Content CTA Block
  */
 
-// Ưu tiên block, fallback option
 $enable = get_field('cta_enable');
 if ($enable === null) {
     $enable = get_field('post_cta_enable', 'option');

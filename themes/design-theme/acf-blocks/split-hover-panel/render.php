@@ -18,12 +18,12 @@ $right_img = $right['right_image'] ?? null;
 
 ?>
 
-<section class="split-hover-block bg-[#081427] py-[120px] px-5 flex justify-center">
-    <div class="split-container relative w-full max-w-[1200px] flex gap-5 h-[500px]">
+<section class="split-hover-block bg-[#081427] py-[120px] px-5 block lg:flex justify-center">
+    <div class="split-container relative w-full max-w-[1200px] block lg:flex gap-5 h-full lg:h-[500px]">
 
         <!-- LEFT PANEL -->
         <div
-            class="split-panel left-panel is-collapsed relative overflow-hidden rounded-xl cursor-pointer flex-1 bg-[#1a335d]">
+            class="split-panel left-panel is-collapsed relative overflow-hidden rounded-xl cursor-pointer lg:mb-0 mb-[20px] h-[500px] flex-1 bg-[#1a335d]">
             <!-- TEXT -->
             <div class="panel-content relative z-20 p-10 text-white w-full">
                 <?php if ($left_title): ?>
@@ -48,10 +48,12 @@ $right_img = $right['right_image'] ?? null;
             <div class="panel-media panel-media--left absolute inset-0 z-10 pointer-events-none">
                 <?php if ($left_media === 'video' && $left_vid): ?>
                     <video
-                        class="panel-media__el rounded-sm absolute w-[406px] object-cover h-[354px] left-[200px] bottom-[-50px]"
-                        src="<?= esc_url($left_vid['url']); ?>" muted loop playsinline></video>
+                        class="panel-media__el rounded-sm absolute w-[406px] object-cover h-[354px] left-[35px] lg:left-[200px] bottom-[-50px]"
+                        src="<?= esc_url($left_vid['url']); ?>" muted loop playsinline autoplay>
+                    </video>
+
                 <?php elseif ($left_img): ?>
-                    <img class="panel-media__el rounded-sm absolute w-[406px] object-cover h-[354px] left-[200px] bottom-[-50px]"
+                    <img class="panel-media__el rounded-sm absolute w-[406px] object-cover h-[354px] left-[35px] lg:left-[200px] bottom-[-50px]"
                         src="<?= esc_url($left_img['url']); ?>" alt="">
                 <?php endif; ?>
             </div>
@@ -59,7 +61,7 @@ $right_img = $right['right_image'] ?? null;
 
         <!-- RIGHT PANEL -->
         <div
-            class="split-panel right-panel is-expanded relative overflow-hidden rounded-xl cursor-pointer flex-1 bg-[#ffcc41]">
+            class="split-panel right-panel is-expanded relative overflow-hidden rounded-xl h-[500px] cursor-pointer flex-1 bg-[#ffcc41]">
             <div class="panel-content relative z-20 p-10 text-[#081427] w-full">
                 <?php if ($right_title): ?>
                     <h3 class="panel-title text-[28px] font-semibold mb-4"><?= esc_html($right_title); ?></h3>

@@ -27,4 +27,18 @@ add_action('wp_enqueue_scripts', function () {
         [],
         '6.5.1'
     );
+
+    wp_enqueue_script(
+        'resources-ajax',
+        get_template_directory_uri() . '/assets/js/resources-ajax.js',
+        ['jquery'],
+        null,
+        true
+    );
+
+    wp_localize_script('resources-ajax', 'RESOURCES_AJAX', [
+        'ajax_url' => admin_url('admin-ajax.php')
+    ]);
+
+
 });

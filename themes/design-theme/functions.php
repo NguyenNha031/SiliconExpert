@@ -6,6 +6,7 @@ require_once get_template_directory() . '/inc/views.php';
 require_once get_template_directory() . '/inc/acf.php';
 require_once get_template_directory() . '/inc/related-posts.php';
 require_once get_template_directory() . '/inc/split-hover-panel.php';
+require_once get_template_directory() . '/inc/ajax-resources.php';
 
 
 add_filter('show_admin_bar', '__return_false');

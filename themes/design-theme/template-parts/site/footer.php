@@ -11,7 +11,7 @@ $terms_text = get_field('footer_terms_text', 'option') ?: 'Terms of Use';
 $privacy_link = get_field('footer_privacy_link', 'option');
 $terms_link = get_field('footer_terms_link', 'option');
 ?>
-<footer class="bg-[#1f3764] text-white sticky bottom-0 -z-[5]">
+<footer class="bg-[#1f3764] text-white relative lg:sticky bottom-0 z-1 lg:-z-[5]">
     <?php
     $logo_icon = get_field('header_logo_icon', 'option');
     $logo_text = get_field('header_logo_text', 'option');
@@ -89,7 +89,7 @@ $terms_link = get_field('footer_terms_link', 'option');
     ?>
     <!-- MAIN FOOTER -->
     <div class="max-w-7xl mx-auto px-6 pt-16 pb-16">
-        <div class="grid grid-cols-12 gap-x-16 gap-y-14">
+        <div class="lg:grid block grid-cols-12 gap-x-16 gap-y-14">
 
             <!-- LOGO -->
             <div class="col-span-12 lg:col-span-4">
@@ -102,12 +102,29 @@ $terms_link = get_field('footer_terms_link', 'option');
 
                         <?php if ($logo_text): ?>
                             <img src="<?= esc_url($logo_text['url']) ?>" alt="<?= esc_attr($logo_text['alt'] ?: 'Logo Text') ?>"
-                                class="logo-text h-[22px] w-auto object-contain hidden sm:block cursor-pointer" />
+                                class="logo-text h-[22px] w-auto object-contain  sm:block cursor-pointer" />
                         <?php endif; ?>
                     </div>
                 <?php endif; ?>
             </div>
-
+            <?php if ($footer_cta_enable): ?>
+                <?php
+                $cta_url = '#';
+                if (is_array($footer_cta_link) && !empty($footer_cta_link['url'])) {
+                    $cta_url = $footer_cta_link['url'];
+                }
+                ?>
+                <div class="my-6 block lg:hidden">
+                    <button class="btn-get-started" onclick="window.location.href='<?= esc_url($cta_url) ?>'">
+                        <span class="btn-get-started__text">
+                            <?= esc_html($footer_cta_text) ?>
+                        </span>
+                        <span class="btn-get-started__icon w-[40px] h-[40px]">
+                            <i class="fa-solid fa-arrow-right rotate-[-30deg]"></i>
+                        </span>
+                    </button>
+                </div>
+            <?php endif; ?>
 
             <!-- SOLUTIONS + SERVICES -->
             <div class="col-span-6 lg:col-span-2">
@@ -221,7 +238,7 @@ $terms_link = get_field('footer_terms_link', 'option');
                         $cta_url = $footer_cta_link['url'];
                     }
                     ?>
-                    <div class="mt-6">
+                    <div class="mt-6 hidden lg:block">
                         <button class="btn-get-started" onclick="window.location.href='<?= esc_url($cta_url) ?>'">
                             <span class="btn-get-started__text">
                                 <?= esc_html($footer_cta_text) ?>

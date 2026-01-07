@@ -787,9 +787,10 @@ $header_bg_class = $is_post_page
 
 
             <!-- RIGHT: MOBILE ACTIONS -->
-            <div class="flex items-center gap-5 text-white lg:hidden"> <button class="mobile-search"> <i
-                        class="fa-solid fa-magnifying-glass text-[18px]"></i> </button> <button
-                    class="mobile-menu-toggle"> <i class="fa-solid fa-bars text-[20px]"></i> </button> </div>
+            <div class="flex items-center gap-5 lg:hidden <?= $header_text_class ?>">
+                <button class="mobile-search"> <i class="fa-solid fa-magnifying-glass text-[18px]"></i> </button>
+                <button class="mobile-menu-toggle"> <i class="fa-solid fa-bars text-[20px]"></i> </button>
+            </div>
 
         </div>
     </div>

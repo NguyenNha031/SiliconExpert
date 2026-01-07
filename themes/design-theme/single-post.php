@@ -67,7 +67,7 @@ get_header();
                     <div class="flex items-center justify-between h-[64px] text-sm text-[#1C3664]">
 
                         <!-- LEFT: BREADCRUMB -->
-                        <div class="flex items-center gap-2 text-[#1C3664]/70">
+                        <div class="lg:flex hidden items-center gap-2 text-[#1C3664]/70">
                             <a href="<?= esc_url(home_url('/resources')) ?>" class="hover:underline">
                                 Resources
                             </a>
@@ -94,8 +94,8 @@ get_header();
                         <!-- RIGHT: ACTIONS -->
                         <div class="flex items-center gap-6">
 
-                            <button id="openShareModal"
-                                class="flex items-center gap-2 text-[#1C3664]/70 hover:text-[#0B1F3B] transition-colors">
+                            <button
+                                class="flex openShareModal items-center gap-2 text-[#1C3664]/70 hover:text-[#0B1F3B] transition-colors">
                                 <span>Share</span>
                             </button>
                             <!-- Modal share -->
@@ -128,7 +128,7 @@ get_header();
                                 </div>
                             </div>
 
-                            <div class="a2a_kit a2a_default_style flex items-center gap-4">
+                            <div class="a2a_kit a2a_default_style flex items-center gap-4 pr-[180px] lg:pr-0">
                                 <a class="a2a_button_x"></a>
                                 <a class="a2a_button_facebook"></a>
                                 <a class="a2a_button_linkedin"></a>
@@ -163,45 +163,18 @@ get_header();
             <?php endif; ?>
 
             <!-- POST CONTENT -->
-            <section class="pb-32">
+            <section class="lg:pb-32 pb-4">
                 <div class="mx-auto max-w-[900px] px-6">
                     <article class="prose prose-lg post-content prose-slate max-w-none pb-[50px]">
                         <?php the_content(); ?>
                     </article>
                     <div class="flex items-center justify-between gap-6 border-t border-[#1C3664] py-[15px]">
                         <div class="flex items-center  gap-6">
-                            <button id="openShareModal"
-                                class="flex items-center gap-2 text-[#1C3664]/70 hover:text-[#0B1F3B] transition-colors">
+                            <button
+                                class="flex openShareModal items-center gap-2 text-[#1C3664]/70 hover:text-[#0B1F3B] transition-colors">
                                 <span>Share</span>
                             </button>
-                            <div id="shareModal"
-                                class="fixed inset-0 z-[9999] hidden flex items-center justify-center bg-black/50 backdrop-blur-sm">
-                                <div class="bg-white rounded-2xl p-6 w-full max-w-md shadow-2xl relative mx-4">
-                                    <div class="flex justify-between items-center mb-6">
-                                        <h3 class="text-xl font-semibold text-[#0B1F3B]">Share Modal</h3>
-                                        <button id="closeShareModal" class="text-gray-400 hover:text-gray-600">
-                                            <i class="fa-solid fa-xmark text-xl"></i>
-                                        </button>
-                                    </div>
 
-                                    <p class="text-sm text-gray-500 mb-4">Share this link via</p>
-
-                                    <div class="flex gap-4 mb-8">
-                                        <?php echo do_shortcode('[Sassy_Social_Share]'); ?>
-                                    </div>
-
-                                    <p class="text-sm text-gray-500 mb-2">Or copy link</p>
-                                    <div class="flex items-center gap-2 border border-gray-200 rounded-lg p-2 bg-gray-50">
-                                        <i class="fa-solid fa-link text-gray-400 ml-2"></i>
-                                        <input type="text" readonly value="<?php the_permalink(); ?>" id="shareInput"
-                                            class="bg-transparent border-none text-sm w-full focus:ring-0 text-gray-600">
-                                        <button onclick="copyShareLink()"
-                                            class="bg-[#6366f1] text-white px-4 py-1.5 rounded-md text-sm font-medium hover:bg-[#4f46e5] transition-colors">
-                                            Copy
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
 
                             <div class="a2a_kit a2a_default_style flex items-center gap-4">
                                 <a class="a2a_button_x"></a>
@@ -323,7 +296,7 @@ $related_posts = design_get_related_posts([
         <!-- GRID -->
         <div class="sm:block lg:grid grid-cols-1 md:grid-cols-3 gap-10">
             <?php foreach ($related_posts as $p): ?>
-                <article class="group sm:mb-[15px]">
+                <article class="group lg:mb-0 mb-[15px]">
                     <div class="relative overflow-hidden rounded-sm custom-cut-corner">
 
                         <!-- BUTTON OVERLAY -->
@@ -373,12 +346,12 @@ if ($split_panel):
     $left = $split_panel['left'];
     $right = $split_panel['right'];
     ?>
-    <section class="split-hover-block bg-[#081427] py-[80px] px-5 flex justify-center">
-        <div class="split-container relative w-full max-w-[1200px] flex gap-5 h-[500px]">
+    <section class="split-hover-block bg-[#081427] py-[80px] px-5 block lg:flex justify-center">
+        <div class="split-container relative w-full max-w-[1200px]  block lg:flex gap-5 h-auto">
 
             <!-- LEFT PANEL -->
             <div
-                class="split-panel left-panel is-collapsed relative overflow-hidden rounded-xl cursor-pointer flex-1 bg-[#1a335d]">
+                class="split-panel left-panel is-collapsed relative overflow-hidden rounded-xl h-[500px] lg:mb-0 mb-[20px] cursor-pointer flex-1 bg-[#1a335d]">
                 <div class="panel-content relative z-20 p-10 text-white w-full">
 
                     <?php if ($left['title']): ?>
@@ -401,10 +374,12 @@ if ($split_panel):
                 <div class="panel-media panel-media--left absolute inset-0 z-10 pointer-events-none">
 
                     <?php if ($left['media_type'] === 'video' && $left['video']): ?>
-                        <video class="absolute w-[406px] h-[354px] object-cover left-[200px] bottom-[-50px]"
-                            src="<?= esc_url($left['video']['url']); ?>" muted loop playsinline></video>
+                        <video class="absolute w-[406px] h-[354px] object-cover left-[35px] lg:left-[200px] bottom-[-50px]"
+                            src="<?= esc_url($left['video']['url']); ?>" muted loop playsinline autoplay>
+                        </video>
+
                     <?php elseif ($left['image']): ?>
-                        <img class="absolute w-[406px] h-[354px] object-cover left-[200px] bottom-[-50px]"
+                        <img class="absolute w-[406px] h-[354px] object-cover left-[35px] lg:left-[200px] bottom-[-50px]"
                             src="<?= esc_url($left['image']['url']); ?>" alt="">
                     <?php endif; ?>
                 </div>
@@ -412,7 +387,7 @@ if ($split_panel):
 
             <!-- RIGHT PANEL -->
             <div
-                class="split-panel right-panel is-expanded relative overflow-hidden rounded-xl cursor-pointer flex-1 bg-[#ffcc41]">
+                class="split-panel right-panel is-expanded relative overflow-hidden rounded-xl h-[500px] cursor-pointer flex-1 bg-[#ffcc41]">
                 <div class="panel-content relative z-20 p-10 text-[#081427] w-full">
 
                     <?php if ($right['title']): ?>
@@ -445,36 +420,59 @@ if ($split_panel):
 
 <script>
     const modal = document.getElementById('shareModal');
-    const openBtn = document.getElementById('openShareModal');
+    const openBtns = document.querySelectorAll('.openShareModal');
     const closeBtn = document.getElementById('closeShareModal');
 
-    openBtn.onclick = () => modal.classList.remove('hidden');
+    openBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            modal.classList.remove('hidden');
+        });
+    });
 
-    closeBtn.onclick = () => modal.classList.add('hidden');
-    window.onclick = (event) => {
-        if (event.target == modal) modal.classList.add('hidden');
-    }
+    closeBtn.addEventListener('click', () => {
+        modal.classList.add('hidden');
+    });
 
-    function copyShareLink() {
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.classList.add('hidden');
+        }
+    });
+
+
+    function copyShareLink(btn) {
         const copyText = document.getElementById("shareInput");
-        copyText.select();
-        copyText.setSelectionRange(0, 99999);
         navigator.clipboard.writeText(copyText.value);
 
-        const btn = event.target;
         const originalText = btn.innerText;
         btn.innerText = "Copied!";
-        setTimeout(() => { btn.innerText = originalText; }, 2000);
+        setTimeout(() => {
+            btn.innerText = originalText;
+        }, 2000);
     }
+
 </script>
 
 <script>
-    // Collapsed và expanded split-hover block
+    function isDesktop() {
+        return window.matchMedia("(min-width: 1024px)").matches;
+    }
+
     document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll(".split-hover-block").forEach((block) => {
             const leftPanel = block.querySelector(".left-panel");
             const rightPanel = block.querySelector(".right-panel");
             if (!leftPanel || !rightPanel) return;
+
+            if (!isDesktop()) {
+                leftPanel.classList.add("is-expanded");
+                leftPanel.classList.remove("is-collapsed");
+
+                rightPanel.classList.add("is-expanded");
+                rightPanel.classList.remove("is-collapsed");
+
+                return;
+            }
 
             const leftVideo = leftPanel.querySelector(".panel-media video");
 
@@ -484,6 +482,7 @@ if ($split_panel):
             leftPanel.addEventListener("mouseenter", () => {
                 leftPanel.classList.add("is-expanded");
                 leftPanel.classList.remove("is-collapsed");
+
                 rightPanel.classList.add("is-collapsed");
                 rightPanel.classList.remove("is-expanded");
 
@@ -496,6 +495,7 @@ if ($split_panel):
             rightPanel.addEventListener("mouseenter", () => {
                 rightPanel.classList.add("is-expanded");
                 rightPanel.classList.remove("is-collapsed");
+
                 leftPanel.classList.add("is-collapsed");
                 leftPanel.classList.remove("is-expanded");
 
@@ -506,6 +506,6 @@ if ($split_panel):
             });
         });
     });
-
 </script>
+
 <?php get_footer(); ?>

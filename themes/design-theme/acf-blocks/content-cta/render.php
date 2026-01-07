@@ -16,7 +16,7 @@ $secondary_text = get_field('secondary_cta_text') ?: 'Secondary CTA';
 $secondary_link = get_field('secondary_cta_link');
 ?>
 
-<section class="content-block  min-h-[400px] lg:min-h-[708px] ">
+<section class="content-block mt-[100px]  min-h-[400px] lg:min-h-[708px] ">
     <?php if ($eyebrow): ?>
         <div class="content-eyebrow
             font-ibm

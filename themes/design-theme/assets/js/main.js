@@ -285,12 +285,29 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 // COLLAPSED AND EXPANEDED
+function isDesktop() {
+  return window.matchMedia("(min-width: 1024px)").matches;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".split-hover-block").forEach((block) => {
     const leftPanel = block.querySelector(".left-panel");
     const rightPanel = block.querySelector(".right-panel");
     if (!leftPanel || !rightPanel) return;
 
+    /* ===== MOBILE ===== */
+    if (!isDesktop()) {
+      // Mobile: cả 2 panel đều expanded
+      leftPanel.classList.add("is-expanded");
+      leftPanel.classList.remove("is-collapsed");
+
+      rightPanel.classList.add("is-expanded");
+      rightPanel.classList.remove("is-collapsed");
+
+      return; // ⛔ DỪNG TẠI ĐÂY, KHÔNG GẮN HOVER
+    }
+
+    /* ===== DESKTOP ===== */
     const leftVideo = leftPanel.querySelector(".panel-media video");
 
     leftPanel.classList.add("is-collapsed");
@@ -299,6 +316,7 @@ document.addEventListener("DOMContentLoaded", () => {
     leftPanel.addEventListener("mouseenter", () => {
       leftPanel.classList.add("is-expanded");
       leftPanel.classList.remove("is-collapsed");
+
       rightPanel.classList.add("is-collapsed");
       rightPanel.classList.remove("is-expanded");
 
@@ -311,6 +329,7 @@ document.addEventListener("DOMContentLoaded", () => {
     rightPanel.addEventListener("mouseenter", () => {
       rightPanel.classList.add("is-expanded");
       rightPanel.classList.remove("is-collapsed");
+
       leftPanel.classList.add("is-collapsed");
       leftPanel.classList.remove("is-expanded");
 

@@ -256,7 +256,6 @@ button {
 .custom-cut-corner {
   clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 85% 100%, 0% 100%);
 }
-/* TESTIMONIAL GRADIENT OVERLAY */
 .testimonial-gradient {
   position: relative;
 }
